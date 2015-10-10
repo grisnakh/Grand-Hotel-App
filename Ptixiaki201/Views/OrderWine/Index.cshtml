@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Ptixiaki201.OrderWineTab>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<html>
+    @section header{
+        <h1>Wine List</h1>
+        <a href="@Url.Action("Checkout","OrderWine")">Check Out</a>
+        }
+<head>
+    <link rel="stylesheet" href="~/Content/jquery.mobile-1.2.0.css" />
+</head>
+<body>
+    <div data-role="content">
+        <ul data-role="listview" data-inset="true" data-theme="a" data-mini="true">
+            @foreach (var item in Model)
+            {
+                <li data-role="list-divider">@Html.DisplayFor(i => item.wineCategory)</li>
+                <li data-theme="b">
+                    <a href="@Url.Action("Order", "OrderWine", new { id = item.Id })">
+                        <h4 class="ui-li-heading " style="margin-left: 15px">@Html.DisplayFor(modelitem => item.wineTitle)</h4>
+                        <p class="ui-li-desc" style="margin-left: 15px; width: 70%">@Html.DisplayFor(modelitem => item.wineDescription)</p>
+                        <b style="float: right; margin-top: -45px; margin-right: 80px;">€@Html.DisplayFor(modelitem => item.winePrice)</b>
+                    </a>
+                </li>
+
+            }
+        </ul>
+    </div>
+    <p>@Html.ActionLink("Back to Menu","Index","Start")</p>
+</body>
+</html>

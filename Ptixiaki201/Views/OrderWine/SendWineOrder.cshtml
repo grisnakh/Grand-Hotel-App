@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "SendWineOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header
+{
+    <h1>My Concierge</h1>
+}
+<h2>Thanks for using our service</h2>
+<p>Your order will be delivered shortly.</p>
+@DateTime.Now
+<p>
+    @using (Html.BeginForm("DeleteOrder", "OrderWine"))
+    { 
+        <input type="submit" name="finish" value="Finish Order!" />
+    }
+</p>

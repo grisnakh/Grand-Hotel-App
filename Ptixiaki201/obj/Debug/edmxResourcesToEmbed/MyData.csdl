@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="MyData" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="MyDataContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Order" EntityType="MyData.Order" />
+    <EntitySet Name="OrderFoodTab" EntityType="MyData.OrderFoodTab" />
+    <EntitySet Name="Prosfores" EntityType="MyData.Prosfores" />
+    <EntitySet Name="Users" EntityType="MyData.Users" />
+    <EntitySet Name="Requests" EntityType="MyData.Requests" />
+    <AssociationSet Name="FK_Requests_Requests" Association="MyData.FK_Requests_Requests">
+      <End Role="Requests" EntitySet="Requests" />
+      <End Role="Requests1" EntitySet="Requests" />
+    </AssociationSet>
+    <EntitySet Name="OrderWineTab" EntityType="MyData.OrderWineTab" />
+    <EntitySet Name="CallTAXI" EntityType="MyData.CallTAXI" />
+    <EntitySet Name="Administrator" EntityType="MyData.Administrator" />
+  </EntityContainer>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Category" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Quantity" />
+    <Property Type="Double" Name="OverallPrice" Nullable="false" />
+    <Property Type="DateTime" Name="DateTime" Precision="0" />
+    <Property Type="String" Name="Status" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Room" />
+    <Property Type="String" Name="Ordered" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Comments" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="EmailSent" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="OrderFoodTab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" />
+    <Property Type="String" Name="foodTitle" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="foodCategory" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="foodDescription" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Type="Double" Name="foodPrice" Nullable="false" />
+    <Property Type="Int32" Name="foodIndexofPage" />
+    <Property Type="Double" Name="foodOverallPrice" />
+    <Property Type="String" Name="Images" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Prosfores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Title" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Discount" />
+    <Property Type="Double" Name="OriginalPrice" />
+    <Property Type="Double" Name="PriceWithDiscount" />
+    <Property Type="DateTime" Name="ExpDate" Precision="0" />
+    <Property Type="String" Name="Category" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Boolean" Name="TopOffer" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="Int32" Name="Room" />
+    <Property Type="Boolean" Name="IsConnected" />
+    <Property Type="DateTime" Name="DateofRegistration" Precision="0" />
+    <Property Type="String" Name="Email" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="Password" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Requests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="RequestBody" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="DateTime" Name="Date" Precision="0" />
+    <Property Type="Int32" Name="Room" />
+    <NavigationProperty Name="Requests1" Relationship="MyData.FK_Requests_Requests" FromRole="Requests" ToRole="Requests1" />
+    <NavigationProperty Name="Requests2" Relationship="MyData.FK_Requests_Requests" FromRole="Requests1" ToRole="Requests" />
+  </EntityType>
+  <Association Name="FK_Requests_Requests">
+    <End Type="MyData.Requests" Role="Requests" Multiplicity="1" />
+    <End Type="MyData.Requests" Role="Requests1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Requests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requests1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="OrderWineTab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="wineTitle" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="wineCategory" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="wineDescription" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Type="Double" Name="winePrice" />
+    <Property Type="String" Name="Images" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="CallTAXI">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="NumOfCars" />
+    <Property Type="DateTime" Name="Time" Precision="3" />
+    <Property Type="Int32" Name="Room" />
+  </EntityType>
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Type="Int32" Name="Id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="String" Name="username" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Type="String" Name="password" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

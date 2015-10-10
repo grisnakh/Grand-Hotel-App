@@ -1,0 +1,19 @@
+﻿@model Ptixiaki201.Users
+@*@model Ptixiaki201.Models.OrderModel*@
+@{
+    ViewBag.Title = "My Concierge";
+}
+@section Header
+    {
+    <div data-role="header">
+        <h1>My Concierge</h1>
+    </div>
+}
+<div data-role="content">
+    <span style="float: left; width: 100%; text-align: end; font-size: small;">
+        Logged in:<b style="z-index:999"> @Html.DisplayFor(model => model.Name)</b>
+        <p>Room:<b> @Html.DisplayFor(Model => Model.Room)</b></p>
+        @*@Html.DisplayFor(model=>model.Order.Where(pro=>pro.Title).FirstOrDefault())*@
+    </span>
+</div>
+@Html.Action("Index", "Start")

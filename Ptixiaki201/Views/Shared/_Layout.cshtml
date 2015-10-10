@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <style>
+                #imgcontainer
+        {
+            display: table-cell;
+            text-align: center;
+            width: 100%;
+            height: auto;
+            bottom:80px;
+            z-index:0;
+            overflow:visible;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @Styles.Render("~/Content/mobileCss", "~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="@Url.Content("~/Content/jquery.mobile-1.2.0.css")" type="text/css"/>
+    @RenderSection("Content", false)
+</head>
+<body>
+    <div data-role="page" data-theme="b">
+        <div data-role="header">
+            @if (IsSectionDefined("Header"))
+            {
+                @RenderSection("Header")
+            }
+            else
+            {
+                <h1>My Concierge</h1>
+                @Html.ActionLink("Check out", "CheckOut", "Ptixiaki", routeValues: null, htmlAttributes: new { data_icon = "check", data_iconpos = "right", data_inline = "true", @class = "img" })
+
+            }
+        </div>
+        <div data-role="content">
+            @RenderBody()
+        </div>
+        <div id="imgcontainer">
+            @if (IsSectionDefined("ImageContainer"))
+            { 
+                @RenderSection("ImageContainer")
+            }
+            else
+            {
+                <img src="~/Content/images/Ptixiaki/B_BrandB_Hotel_Logo_neu.JPG" width="30%" height="21%" />
+            }
+        </div>
+
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    <script>
+        $(document).on("mobileinit", function () {
+            $.mobile.ajaxEnabled = false;
+        });
+    </script>
+    @Scripts.Render("~/bundles/jquerymobile")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

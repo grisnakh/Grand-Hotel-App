@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>CallTaxiLater</title>
+</head>
+<body>
+    @using (Html.BeginForm("CallTaxiLater", "CallTaxi"))
+    { 
+        <div data-mini="true">
+            <span>Number of cars:</span>
+            <input type="number" value="1" name="numberofcars"/>
+            <p>
+                <span>Time:
+                <input type="time" value="20:00pm" name="time" />
+                </span>
+            </p>
+            <button data-mini="false" type="submit" value="Call Later!"></button>
+        </div>
+    }
+</body>
+</html>

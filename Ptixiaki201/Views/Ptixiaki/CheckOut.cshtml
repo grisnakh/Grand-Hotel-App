@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Ptixiaki201.Order>
+@using Ptixiaki201.Models
+@{
+    ViewBag.Title = "CheckOut";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <title>Checkout</title>
+</head>
+<body>
+
+    <style>
+        .list:nth-child(2n+1)
+        {
+            color: black;
+            background-color: yellow;
+        }
+
+        .total
+        {
+            margin-top: 20px;
+            margin-right: 60px;
+        }
+
+        .list:nth-child(n)
+        {
+            margin-bottom: 10px;
+        }
+        #link:link
+        {
+            color:black;
+        }
+        #link:visited
+        {
+            color:green;
+        }
+    </style>
+    @section Header{
+        <h1>My Concierge</h1>
+
+    }
+
+    @Html.ValidationSummary(true)
+    <div data-role="content" id="OrderList">
+        <ul data-role="listview" data-inset="true" data-theme="b">
+            @foreach (var item in Model.OrderByDescending(id => id.Id).Where(x => x.Status == "foodorder"))
+            {
+                <li data-role="list-divider" data-theme="b">
+                    <h1>Order: @Html.DisplayFor(modelitem => item.Id)</h1>
+                    <p>Total Cost : € <span class="price">@Html.DisplayFor(modelitem => item.OverallPrice)</span></p>
+
+                    <div class="deletebtn ui-li-aside" style=" width: 40px; height: 10px;">
+                        @using (Html.BeginForm("Delete", "ptixiaki", new { id = item.Id }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <p>
+                                <button type="submit" data-icon="delete" class="ui-btn" data-theme="d"></button>
+                            </p>
+                        }
+                        
+
+                    </div>@*DELETE BUTTON*@
+                </li>
+                <li class="list">
+                    <h5 class="toget">@Html.DisplayFor(modelitem => item.Title)</h5>
+                    <p>Quantity: @Html.DisplayFor(modelitem => item.Quantity)</p>
+                    @*<p>Total:€ <span class="price">@Html.DisplayFor(modelitem => item.OverallPrice)</span></p>*@
+                    <p class="ui-li-aside" style="margin-right: 60px; margin-top: 40px; font-size: 13px"><b>Ordered:</b> @item.DateTime.Value.ToShortDateString()</p>
+
+                    <p><a href="@Url.Action("Comments", "Ptixiaki", new {id=item.Id })" id="link">Additional Comments</a></p>
+
+                </li>          
+            }
+        </ul>
+        <div>
+            @using (Html.BeginForm("Checkout", "ptixiaki"))
+            { 
+                @Html.AntiForgeryToken()
+                <input type="submit" class="ui-btn" data-theme="a" value="Order Now!">
+                <input type="text" value="Ordered" name="Ordered" style="display: none" />         
+            
+            }
+
+        </div>
+    </div>
+
+    @*  HISTORY PAGE  *@
+@*    <div id="HistoryList" style="display: none" data-role="content">
+        <ul data-role="listview" class="ui-listview" data-theme="b" style="margin-top: 50px;" data-inset="true">
+            @foreach (var item in Model.OrderByDescending(id => id.Id).Where(x => x.Status == "Ordered"))
+            {
+                <li class="list">
+                    <h5>@Html.DisplayFor(modelitem => item.Title)</h5>
+                    <p>Quantity: @Html.DisplayFor(modelitem => item.Quantity)</p>
+                    
+                    <p class="ui-li-aside" style="margin-right: 60px; margin-top: 40px; font-size: 13px"><b>Ordered:</b> @item.DateTime.Value.ToShortDateString()</p>
+                </li> 
+            }
+        </ul>
+    </div>*@
+    <div>@Html.ActionLink("Back to Menu", "Index", "Ptixiaki")</div>
+</body>
+</html>

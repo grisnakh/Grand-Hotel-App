@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<link rel="stylesheet" href="~/Content/jquery.mobile-1.2.0.css" />
+
+
+<div data-role="ui-content" data-theme="a">
+    <ul data-role="listview" data-inset="true" class="menu ui-shadow" data-mini="false" data-iconpos="left">
+        <li data-icon="plus" ><a href="@Url.Action("RegisterClient", "Admin")" data-iconshadow="false">
+            <h2>Register new Client</h2>
+        </a></li>
+@*        <li data-icon="gear"><a href="#">
+            <h2>Modify Client Data</h2>
+        </a></li>*@
+        <li data-icon="minus"><a href="@Url.Action("DeleteClient","Admin")">
+            <h2>Delete Client data</h2>
+        </a></li>
+        <li data-icon="search"><a href="@Url.Action("ShowClientList","Admin")">
+            <h2>Search Clients List</h2>
+        </a>
+        </li>
+    </ul>
+</div>

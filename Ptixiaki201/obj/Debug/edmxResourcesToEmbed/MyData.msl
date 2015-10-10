@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs" Space="C-S">
+  <Alias Key="Model" Value="MyData" />
+  <Alias Key="Target" Value="MyData.Store" />
+  <EntityContainerMapping CdmEntityContainer="MyDataContainer" StorageEntityContainer="MyDataStoreContainer">
+    <EntitySetMapping Name="Order">
+      <EntityTypeMapping TypeName="MyData.Order">
+        <MappingFragment StoreEntitySet="Order">
+          <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+          <ScalarProperty Name="Comments" ColumnName="Comments" />
+          <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="OverallPrice" ColumnName="OverallPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderFoodTab">
+      <EntityTypeMapping TypeName="MyData.OrderFoodTab">
+        <MappingFragment StoreEntitySet="OrderFoodTab">
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="foodOverallPrice" ColumnName="foodOverallPrice" />
+          <ScalarProperty Name="foodIndexofPage" ColumnName="foodIndexofPage" />
+          <ScalarProperty Name="foodPrice" ColumnName="foodPrice" />
+          <ScalarProperty Name="foodDescription" ColumnName="foodDescription" />
+          <ScalarProperty Name="foodCategory" ColumnName="foodCategory" />
+          <ScalarProperty Name="foodTitle" ColumnName="foodTitle" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Prosfores">
+      <EntityTypeMapping TypeName="MyData.Prosfores">
+        <MappingFragment StoreEntitySet="Prosfores">
+          <ScalarProperty Name="TopOffer" ColumnName="TopOffer" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+          <ScalarProperty Name="ExpDate" ColumnName="ExpDate" />
+          <ScalarProperty Name="PriceWithDiscount" ColumnName="PriceWithDiscount" />
+          <ScalarProperty Name="OriginalPrice" ColumnName="OriginalPrice" />
+          <ScalarProperty Name="Discount" ColumnName="Discount" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MyData.Users">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DateofRegistration" ColumnName="DateofRegistration" />
+          <ScalarProperty Name="IsConnected" ColumnName="IsConnected" />
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Requests">
+      <EntityTypeMapping TypeName="MyData.Requests">
+        <MappingFragment StoreEntitySet="Requests">
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="RequestBody" ColumnName="RequestBody" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderWineTab">
+      <EntityTypeMapping TypeName="MyData.OrderWineTab">
+        <MappingFragment StoreEntitySet="OrderWineTab">
+          <ScalarProperty Name="Images" ColumnName="Images" />
+          <ScalarProperty Name="winePrice" ColumnName="winePrice" />
+          <ScalarProperty Name="wineDescription" ColumnName="wineDescription" />
+          <ScalarProperty Name="wineCategory" ColumnName="wineCategory" />
+          <ScalarProperty Name="wineTitle" ColumnName="wineTitle" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CallTAXI">
+      <EntityTypeMapping TypeName="MyData.CallTAXI">
+        <MappingFragment StoreEntitySet="CallTAXI">
+          <ScalarProperty Name="Room" ColumnName="Room" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="NumOfCars" ColumnName="NumOfCars" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Administrator">
+      <EntityTypeMapping TypeName="MyData.Administrator">
+        <MappingFragment StoreEntitySet="Administrator">
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

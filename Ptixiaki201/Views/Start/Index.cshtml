@@ -1,0 +1,87 @@
+﻿@{
+    ViewBag.Title = "Main Menu";
+}
+<html>
+
+<head>
+    <title>Main Menu</title>
+    <link rel="stylesheet" href="~/Content/jquery.mobile-1.2.0.css" />
+    <style>
+        .fitinlistview
+        {
+            height: 50px;
+            width: 50px;
+            margin: 20px 30px;
+            max-height: 50px;
+            max-width: 50px;
+        }
+
+        .menu
+        {
+            font-family: 'Cordia New';
+            font-size: x-large;
+            z-index: 20;
+        }
+
+        #imgcontainer
+        {
+            display: table-cell;
+            text-align: center;
+            width: 100%;
+            height: auto;
+            bottom: 80px;
+            z-index: 0;
+        }
+
+        .title
+        {
+            font-size: large;
+        }
+
+        .subtitle
+        {
+            font-size: medium;
+        }
+    </style>
+</head>
+@section header
+    {
+    <h1>My Concierge</h1>
+    <a href="@Url.Action("Account", "Start")" data-role="button" data-icon="gear" data-iconshadow="false">Account</a>
+}
+<body>
+    <div data-role="ui-content" data-theme="c">
+        <ul data-role="listview" data-inset="true" class="menu ui-shadow" data-mini="true">
+            <li><a href="@Url.Action("Index", "OrderWine")">
+                <img src="~/Content/images/Ptixiaki/Gifs/wine.gif" class="ui-li-aside fitinlistview" />
+                <h2 class="title">Wine Cellar</h2>
+                <p class="subtitle">Discover our Rich variety of wine and enjoy!</p>
+            </a></li>
+
+            <li><a href="@Url.Action("Index", "Ptixiaki")">
+                <img src="~/Content/images/Ptixiaki/Gifs/fork-knife.gif" class="ui-li-aside fitinlistview" />
+                <h1 class="title">Enjoy a Meal in Your Room</h1>
+                <p class="subtitle">Feel free to choose anything from our menu,and enjoy in the comfort of your room!</p>
+            </a></li>
+
+            <li><a href="@Url.Action("Index", "CallTaxi")">
+                <img src="~/Content/images/Ptixiaki/Gifs/Aiga_taxi.gif" class="ui-li-aside fitinlistview" />
+                <h2 class="title">Need transportation?</h2>
+                <p class="subtitle">Call a Cab!</p>
+            </a></li>
+
+            <li><a href="#">
+                <img src="~/Content/images/Ptixiaki/Gifs/broom.gif" class="ui-li-aside fitinlistview" />
+                <h2 class="title">Hotel Housekeeping</h2>
+                <p class="subtitle">A Hotel housekeeper will come shortly</p>
+            </a></li>
+
+            <li data-theme="a"><a href="@Url.Action("Index", "MakeRequest")">
+                <img src="~/Content/images/Ptixiaki/bell.gif" class="ui-li-aside fitinlistview" />
+                <h2 class="title">Talk directly with our Concierge</h2>
+                <p class="subtitle">How can we help you?</p>
+            </a></li>
+        </ul>
+    </div>
+</body>
+</html>

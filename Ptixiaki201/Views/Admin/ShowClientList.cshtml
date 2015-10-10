@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Ptixiaki201.Users>
+@{
+    ViewBag.Title = "ShowClientList";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<div data-role="content">
+    <ul data-role="listview" data-inset="true" data-filter="true">
+
+        @foreach (var item in Model)
+        {
+            <li data-theme="b">
+                <h2>@Html.DisplayFor(i => item.Name)</h2>
+                <p><strong>Room:</strong>  @Html.DisplayFor(i => item.Room)</p>
+                <p>@Html.DisplayFor(i=>item.Email)</p>
+                <p class="ui-li-aside"><strong>Date of Registration</strong>@Html.DisplayFor(i => item.DateofRegistration)</p>
+            </li>
+        }
+    </ul>
+</div>

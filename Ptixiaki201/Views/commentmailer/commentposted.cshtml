@@ -1,0 +1,11 @@
+@model IEnumerable<Ptixiaki201.Order>
+
+
+@foreach (var item in ViewData.Model.Where(pro => pro.Ordered == "Ordered" && pro.Room == Convert.ToInt32(Session["Room"])))
+{
+    <span>Client from Room: </span><b>@Html.DisplayFor(pro=>item.Room)</b><span>  made an order.</span>
+    <h3>ORDER</h3>
+    <p>@Html.DisplayFor(modelitem => item.Title)</p>
+    <p><b>Quantity:</b> @Html.DisplayFor(modelitem => item.Quantity)</p>
+    <p>Additional Comments: <b>@Html.DisplayFor(pro=>item.Comments)</b></p>
+}

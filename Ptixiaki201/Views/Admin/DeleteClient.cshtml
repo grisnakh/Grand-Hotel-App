@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Ptixiaki201.Users>
+
+@{
+    ViewBag.Title = "DeleteClient";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+<style>
+    #delete
+    {
+        padding: 50px 20px;
+        text-align: center;
+        margin: auto auto;
+    }
+</style>
+
+<div data-role="content" id="main">
+    <ul data-role="listview" data-inset="true" data-filter="true">
+
+        @foreach (var item in Model)
+        {      
+            <li data-theme="b">
+                <h2>@Html.DisplayFor(i => item.Name)</h2>
+                <p><strong>Room:</strong>  @Html.DisplayFor(i => item.Room)</p>
+                <p class="ui-li-aside"><strong>Date of Registration:  </strong>@Html.DisplayFor(i => item.DateofRegistration)</p>
+                <p>
+                    @*<button type="submit" data-icon="delete" class="ui-btn" data-theme="d" data-rel="popup" data-position-to="window" data-transition="pop"></button>*@
+                    <a data-role="button" data-theme="d" data-mini="true" class="ui-li-aside" style="text-align:center" href="#delete" data-rel="popup" data-position-to="window" data-transition="slidefade">Delete</a>
+                </p>
+                <div data-role="popup" id="delete">
+                    @using (Html.BeginForm("Delete", "Admin", new { id = item.Id }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <h1>Do you really want to delete this user?</h1><hr />
+                        <a href="#main" data-role="button" data-inline="true">Cancel</a>
+                        <button type="submit" data-icon="delete" class="ui-btn" data-theme="a" data-rel="popup" data-position-to="window" data-transition="pop" data-inline="true" data-theme="b">Delete</button>
+                    }
+                </div>
+            </li>
+        }
+    </ul>
+</div>

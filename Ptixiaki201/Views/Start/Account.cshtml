@@ -1,0 +1,114 @@
+﻿@model Ptixiaki201.Users
+@{
+    ViewBag.Title = "Account";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section header{
+    <h1>My Account</h1>}
+<script src="~/Scripts/jquery-1.8.2.js" type="text/javascript"></script>
+
+<style>
+    #info
+    {
+        text-align: center;
+    }
+
+    #newemail, #newpass
+    {
+        display: none;
+    }
+</style>
+<div data-role="content">
+    <span id="info">
+        <img id="iconinfo" src="~/Content/images/Ptixiaki/Gifs/info.gif" width="20" height="20" />
+        Here you can see and change the details of your account!
+    </span>
+</div>
+
+@*<div class="ui-grid-a">
+	<div class="ui-block-a"><strong>I'm Block A</strong> and text inside will wrap</div>
+	<div class="ui-block-b"><strong>I'm Block B</strong> and text inside will wrap</div>
+</div>*@
+@using (Html.BeginForm("Account", "Start"))
+{
+    <div>
+        <ul data-role="listview" data-inset="true">
+            <li>
+                <b>Name: </b>@Html.DisplayFor(i => i.Name)
+            </li>
+            <li>
+                <b>Room: </b>@Html.DisplayFor(i => i.Room)
+            </li>
+
+            <li>
+
+
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <b>Email: </b><span id="email">@Html.DisplayFor(i => i.Email)</span>
+                    </div>
+                    <div class="ui-block-b">
+                        <a href="#" data-mini="true" data-role="button" id="changemail" data-theme="a">Change</a>
+                    </div>
+                </div>
+
+                <div id="newemail">
+                    <b>New Email: </b>
+                    <input type="email" placeholder="New Email" id="newemailtxt" />
+                    <a href="#" data-role="button" data-mini="true" id="savemail">Save</a>
+                    <input type="text" name="newemailcontroller" id="newemailcontroller" style="display: none;"  value="@Html.DisplayFor(i=>i.Email)"/>
+                </div>
+            </li>
+            <li>
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <b>Password: </b><span id="password">@Html.DisplayFor(i => i.Password)</span>
+                    </div>
+                    <div class="ui-block-b">
+
+                        <a href="#" data-role="button" id="changepass" data-mini="true" data-theme="a">Change</a>
+                    </div>
+                </div>
+                <div id="newpass">
+                    <b>New Password: </b>
+                    <input type="text" placeholder="New Password" id="newpasstxt" />
+                    <a href="#" data-mini="true" data-role="button" id="savepass">Save</a>
+                    <input type="text" name="newpasswordcontroller" id="newpasswordcontroller" style="display: none;" value="@Html.DisplayFor(i=>i.Password)"/>
+                </div>
+            </li>
+            <li>
+
+                @Html.AntiForgeryToken()
+                <input type="submit" value="Save Changes!" data-theme="a" />
+
+            </li>
+        </ul>
+
+
+    </div>
+}
+
+<script>
+    $(document).ready(function () {
+        $("#changemail").click(function () {
+            $("#newemail").toggle(1000);
+        });
+        $("#changepass").click(function () {
+            $("#newpass").toggle(1000);
+        });
+
+        $("#savemail").click(function () {
+            $("#email").html($("#newemailtxt").val());
+            $("#newemail").hide(1000);
+            $("#newemailcontroller").val($("#newemailtxt").val());
+        });
+        $("#savepass").click(function () {
+            $("#password").html($("#newpasstxt").val());
+            $("#newpass").hide(1000);
+            $("#newpasswordcontroller").val($("#newpasstxt").val());
+        });
+
+
+    });
+</script>

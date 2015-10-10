@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@section header
+    {<h1>My Concierge</h1>}
+
+<div style="text-align: center; display: block">
+    <h3>New feature lets you call a taxi from your phone!</h3>
+    <p>Tell us what time you need it and a taxi will be waiting for you!</p>
+</div>
+<hr />
+
+@*<div style="width:45%;padding:10px 10px;border-right:1px ridge;">
+    <span>Number of cars:</span> <input data-mini="true" type="number" />
+    <p><span>Time: <input type="time" value="12:00" /></span></p>
+
+    <button type="submit" value="Call Taxi!"></button>
+</div>
+<div style="width:45%;padding:10px 10px; float:right;position:relative;display:block">
+    dqddwq
+</div>*@
+<div class="ui-grid-a">
+    <div class="ui-block-a" style="border-right: 1px inset; padding: 10px 10px">
+         
+            @Html.Action("CallTaxiLater", "CallTaxi")
+        
+    </div>
+
+    <div class="ui-block-b" style="padding: 10px 10px">
+        @Html.Action("CallTaxiNow", "CallTaxi")
+
+    </div>
+
+</div>

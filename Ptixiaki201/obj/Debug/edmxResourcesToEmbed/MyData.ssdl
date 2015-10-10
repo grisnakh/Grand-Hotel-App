@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MyData.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MyDataStoreContainer">
+    <EntitySet Name="Administrator" EntityType="MyData.Store.Administrator" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="CallTAXI" EntityType="MyData.Store.CallTAXI" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Order" EntityType="MyData.Store.Order" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderFoodTab" EntityType="MyData.Store.OrderFoodTab" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="OrderWineTab" EntityType="MyData.Store.OrderWineTab" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Prosfores" EntityType="MyData.Store.Prosfores" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Requests" EntityType="MyData.Store.Requests" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="MyData.Store.Users" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_Requests_Requests" Association="MyData.Store.FK_Requests_Requests">
+      <End Role="Requests" EntitySet="Requests" />
+      <End Role="Requests1" EntitySet="Requests" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="nvarchar" MaxLength="50" />
+    <Property Name="password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="CallTAXI">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="NumOfCars" Type="int" />
+    <Property Name="Time" Type="datetime" />
+    <Property Name="Room" Type="int" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="Quantity" Type="int" />
+    <Property Name="OverallPrice" Type="float" Nullable="false" />
+    <Property Name="DateTime" Type="date" />
+    <Property Name="Status" Type="nvarchar" MaxLength="50" />
+    <Property Name="Room" Type="int" />
+    <Property Name="Ordered" Type="nvarchar" MaxLength="50" />
+    <Property Name="Comments" Type="nvarchar(max)" />
+    <Property Name="EmailSent" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="OrderFoodTab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="foodTitle" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="foodCategory" Type="nvarchar" Nullable="false" MaxLength="50" />
+    <Property Name="foodDescription" Type="nvarchar" Nullable="false" MaxLength="150" />
+    <Property Name="foodPrice" Type="float" Nullable="false" />
+    <Property Name="foodIndexofPage" Type="int" />
+    <Property Name="foodOverallPrice" Type="float" />
+    <Property Name="Images" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="OrderWineTab">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="wineTitle" Type="nvarchar" MaxLength="50" />
+    <Property Name="wineCategory" Type="nvarchar" MaxLength="50" />
+    <Property Name="wineDescription" Type="nvarchar(max)" />
+    <Property Name="winePrice" Type="float" />
+    <Property Name="Images" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Prosfores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Discount" Type="int" />
+    <Property Name="OriginalPrice" Type="float" />
+    <Property Name="PriceWithDiscount" Type="float" />
+    <Property Name="ExpDate" Type="date" />
+    <Property Name="Category" Type="nvarchar" MaxLength="50" />
+    <Property Name="TopOffer" Type="bit" />
+  </EntityType>
+  <EntityType Name="Requests">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="RequestBody" Type="nvarchar(max)" />
+    <Property Name="Date" Type="date" />
+    <Property Name="Room" Type="int" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Room" Type="int" />
+    <Property Name="IsConnected" Type="bit" />
+    <Property Name="DateofRegistration" Type="date" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Requests_Requests">
+    <End Role="Requests" Type="MyData.Store.Requests" Multiplicity="1" />
+    <End Role="Requests1" Type="MyData.Store.Requests" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Requests">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Requests1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

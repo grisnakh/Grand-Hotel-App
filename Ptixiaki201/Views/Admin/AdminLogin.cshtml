@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "AdminLogin";
+}
+
+@section header
+{
+    <h1>MyAdmin</h1>
+}
+
+@section ImageContainer{}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    <div data-role="field-contain" data-theme="c" style="margin-top: 20px;">
+        <input type="text" name="username" required="required" placeholder="username" style="padding: 10px 40px; margin: auto auto" />
+        <br />
+        <input type="password" name="password" required="required" placeholder="password" style="padding: 10px 40px; margin: auto auto" />
+        <br />
+        <input type="submit" value="LOGIN" />
+    </div>
+}
+<a href="@Url.Action("Login", "Account")" style="float:right;margin-top:20px">Are you a hotel client?</a>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c0d0f949b614fc2bce6a1d8956f1c86" Name="Diagram1" ZoomLevel="72" >
+        <EntityTypeShape EntityType="MyData.Order" Width="1.5" PointX="9.625" PointY="1.625" />
+        <EntityTypeShape EntityType="MyData.OrderFoodTab" Width="1.5" PointX="3" PointY="4.25" />
+        <EntityTypeShape EntityType="MyData.Prosfores" Width="1.5" PointX="5.75" PointY="2" />
+        <EntityTypeShape EntityType="MyData.Users" Width="1.5" PointX="7.75" PointY="3.625" />
+        <EntityTypeShape EntityType="MyData.Requests" Width="1.5" PointX="5.625" PointY="5.375" />
+        <AssociationConnector Association="MyData.FK_Requests_Requests" />
+        <EntityTypeShape EntityType="MyData.OrderWineTab" Width="1.5" PointX="2.875" PointY="1.625" />
+        <EntityTypeShape EntityType="MyData.CallTAXI" Width="1.5" PointX="11.375" PointY="2" />
+        <EntityTypeShape EntityType="MyData.Administrator" Width="1.5" PointX="0.625" PointY="1.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

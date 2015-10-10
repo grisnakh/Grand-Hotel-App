@@ -1,0 +1,7 @@
+@model IEnumerable<Ptixiaki201.CallTAXI>
+
+@foreach (var item in Model)
+{ 
+    <span>Customer from Room </span> @Html.DisplayFor(i=>item.Room)<span> wants </span>
+    <b>@Html.DisplayFor(i=>item.NumOfCars)</b> <span>Cars <b> @Html.DisplayFor(i=>item.Time) </b>.</span>    
+}

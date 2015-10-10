@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "RegisterClient";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/jquery.mobile-1.2.0.css" />
+<style>
+    ul
+    {
+        display: block;
+    }
+</style>
+
+<script src="~/Scripts/jquery-1.8.2.js" type="text/javascript"></script>
+@using (Html.BeginForm("RegisterClient", "Admin"))
+{
+    @Html.AntiForgeryToken()
+
+    <div data-role="content" data-inset="false">
+        <ul data-role="listview" data-inset="true" data-mini="true" data-theme="b">
+            <li data-role="list-divider" style="text-align: end">Client Registration Form</li>
+        </ul>
+        <ul data-role="listview" data-inset="true">
+             <li data-role="fieldcontain">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <label for="ClientName">Full Name:</label>
+                    </div>
+                    <div class="ui-grid-b">
+                        <input name="ClientName" type="text" required="required" placeholder="Full Name" class="inputs" style="width: 100%; padding: 5px 12px" />
+                    </div>
+                </div>
+            </li>
+            <li data-role="fieldcontain">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <label for="ClientEmail">Email:</label>
+                    </div>
+                    <div class="ui-grid-b">
+                        <input name="ClientEmail" type="email" required="required" placeholder="Email Address" class="inputs" style="width: 100%; padding: 5px 12px" />
+                    </div>
+                </div>
+            </li>
+            <li data-role="fieldcontain">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <label for="ClientRoom">Room:</label>
+                    </div>
+
+                    <div class="ui-block-b">
+                        <input name="ClientRoom" type="number" required="required" style="width: 100%; padding: 5px 12px" />
+                    </div>
+                </div>
+            </li>
+            <li data-role="fieldcontain">
+                <div class="ui-grid-a">
+                    <div class="ui-block-a">
+                        <label for="password"><b>Password:</b></label>
+                    </div>
+                    <div class="ui-block-b">
+                        <input name="ClientPassword" type="text" required="required" id="password" style="width: 100%; padding: 5px 12px" />
+                    </div>
+                </div>
+                <input type="button" id="generateRandom" value="Generate" data-theme="b" />
+            </li>
+            <li>
+                <input type="submit" class="ui-btn" data-theme="a" value="Register Client">
+            </li>
+        </ul>
+    </div>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jquery")
+}
+<script>
+    $(document).ready(function () {
+        $("#generateRandom").click(function () {
+            var text = "";
+            var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+            for (var i = 0; i < 6; i++)
+                text += possible.charAt(Math.floor(Math.random() * possible.length));
+            $("#password").val(text);
+        });
+    });
+</script>

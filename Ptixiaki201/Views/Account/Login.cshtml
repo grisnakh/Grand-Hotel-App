@@ -1,0 +1,34 @@
+﻿@model Ptixiaki201.Users
+
+@{
+    ViewBag.Title = "Log in";
+}
+
+@section Header {
+
+    <h1>@ViewBag.title</h1>
+}
+
+<link rel="stylesheet" href="~/Content/jquery.mobile-1.2.0.css" />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+
+    
+    <div data-role="field-contain" id="Loginmenu" data-theme="c" style="margin-top: 20px;">
+        <input type="email" name="LoginEmail" placeholder="Email Address" data-icon="plus" style="padding: 10px 40px; margin: auto auto;" data-theme="a" required="required" />
+        <br />
+        <input type="password" name="LoginPassword" placeholder="Password" data-icon="plus" style="padding: 10px 40px; margin: auto auto;" data-theme="a" required="required" />
+        <br />
+        <input type="submit" value="LOGIN" />
+    </div>
+        
+        
+}
+<a href="@Url.Action("AdminLogin","Admin")" style="float:right;margin-top:20px">Are you administrator?</a>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

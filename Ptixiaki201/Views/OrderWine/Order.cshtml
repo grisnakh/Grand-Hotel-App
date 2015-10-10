@@ -1,0 +1,143 @@
+﻿@model  Ptixiaki201.OrderWineTab
+
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<html>
+<head>
+    <title>Order</title>
+    <style>
+        .wrapper
+        {
+            font-size: x-large;
+            font-family: 'Cordia New';
+            display: block;
+            overflow: visible;
+            height: auto;
+        }
+
+        #titleofitem
+        {
+            text-align: center;
+            top: 0px;
+            position: relative;
+            padding: 2px 10px;
+            border-bottom: 1px inset black;
+            border-top: 1px inset gray;
+        }
+
+        #priceofitem
+        {
+            /*visibility: visible;
+            float: right;
+            
+            top: -20px;
+            border: 1px solid green;
+            border-radius: 10px;*/
+            position: relative;
+            border: 2px groove red;
+            padding: 2px 7px;
+        }
+
+        #testquantity
+        {
+            text-align: center;
+            height: auto;
+            width: auto;
+        }
+
+        .quantityBox
+        {
+            
+            width: auto;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            margin-top:-40px;
+            padding:4px 5px;
+            margin-bottom:20px;
+        }
+    </style>
+    <script src="~/Scripts/jquery-1.8.2.js"></script>
+</head>
+<body>
+    @section header{
+        <h1>Wine List</h1>
+        <a href="@Url.Action("Checkout","OrderWine")">Check Out</a>
+        }
+
+    @using (Html.BeginForm("Order", "OrderWine"))
+    {
+        @Html.ValidationSummary(true)
+
+        <div class="wrapper">
+            <fieldset>
+                <legend></legend>
+
+                <div data-theme="b" data-inset="false">
+
+
+
+                    <h3 id="titleofitem">@Html.DisplayFor(i=>i.wineTitle)</h3>@*TITLE*@
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a">
+                            <img src="#" alt="Food Image" id="img" style="width: 190px; height: 200px; padding: 5px 10px;" />
+                        </div>
+                        <div class="ui-block-b" style="display: block;">
+                            <h4 style="text-align: left; position: relative;">@Html.DisplayFor(Model => Model.wineDescription)</h4>
+                            <p id="priceofitem">Unit Price: € @Html.DisplayFor(Model => Model.winePrice)</p>@*PRICE*@
+                        </div>
+                    </div>
+                    <hr />
+                    <p>Choose the quantity of your order.Check out to complete it!</p>
+                    
+                    <div class="quantityBox">
+                    </div>
+                    
+                    <!--HIDDEN FOR POST -->
+                    <div class="inputquantity">
+                        <p id="imgURL" style="display: none">@Html.DisplayFor(model => model.Images)</p>
+                    </div>
+                    <input type="text" name="Title" id="OrderTitle" style="display:none" value="@Html.DisplayFor(model => model.wineTitle)" />
+                    <input type="text" name="Category" id="OrderCategory" style="display:none" value="@Html.DisplayFor(model => model.wineCategory)" />
+                    <input type="text" name="overallPrice" id="overallprice" style="display:none" value="@Html.DisplayFor(model => model.winePrice)" />
+                    <!--HIDDEN FOR POST -->
+                    <div class="ui-grid-a">
+                        <div class="ui-block-a quantityBox">
+                            <h3>
+                                <span style="display:block">Quantity:</span>
+                                <input type="number" name="Quantity" id="testquantity" value="1" data-mini="false" />
+                            </h3>
+                        </div>
+                        <div class="ui-block-b ">
+                            <p>
+                                <button type="submit" value="Order" style="margin:auto auto;bottom:0px;">Order</button>
+                            </p>
+                        </div>
+                    </div>
+                    <hr />
+                </div>
+
+
+            </fieldset>
+        </div>
+    }
+    @Html.ActionLink("Back to List", "Index")
+
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+    <script>
+        $(document).ready(function () {
+            var imageURL = $("#imgURL").text();
+            $("#img").attr({ src: imageURL });
+        });
+    </script>
+</body>
+
+</html>
+
